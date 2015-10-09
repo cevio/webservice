@@ -1,0 +1,72 @@
+html,body{
+    height: 100%;
+    font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    font-size: 12px;
+    overflow: scroll;
+}
+
+header{
+    position: fixed;
+    left: 0;
+    right:0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.1);
+    background-color: #fff;
+    top: 0;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+    line-height: 40px;
+    z-index: 600;
+    font-size: 14px;
+}
+
+article{
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+header .left{ color: #555;}
+header .title{ color:#000;}
+header .right{ color: #555;}
+
+header.navShow{ display: block; }
+header.navHide{ display: none; }
+article.navShow{ padding-top: 40px; }
+article.navHide{ padding-top: 0; }
+
+.webview{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right:0;
+    top: 0;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+article.navShow .webview section{
+    padding-top: 40px;
+}
+
+article.navHide .webview section{
+    padding-top: 0;
+}
+
+.webview-active{
+    z-index: 100;
+    display: block;
+}
+.webview-unactive{
+    z-index: 90;
+    display: block;
+}
+
+article .webview section{ position: relative;}
+#webview-refresh{
+    padding: 15px 0;
+    text-align: center;
+    color:#ccc;
+}
