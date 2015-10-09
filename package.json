@@ -1,7 +1,7 @@
 {
-  "name": "nature",
-  "description": "a world nature model - AWNM",
-  "version": "2.2.29",
+  "name": "wenservice",
+  "description": "soyie component - web service",
+  "version": "0.0.1",
   "keywords": [
     "web",
     "mvvm",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/cevio/naturejs"
+    "url": "https://github.com/cevio/webservice"
   },
   "files": [
     "src",
@@ -54,7 +54,7 @@
       "type": "MIT"
     }
   ],
-  "main": "./build/soyie.js",
+  "main": "./build/webservice.js",
   "soyieDeps": {
     "soyie": "2.2.35",
     "jsonp": "0.0.2"
