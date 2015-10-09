@@ -1,8 +1,6 @@
 import component from './component';
 import application from './application';
 
-
-
 let webview = (soyie) => {
     const app = new application();
     soyie.component('webview', component(soyie, app));
