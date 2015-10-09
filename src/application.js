@@ -16,6 +16,8 @@ export default class {
         this.res.app = this.req.app = this;
         this.map = {};
         this.scope = scope();
+        this.refreshCount = 0;
+        this.isRefresh = false;
     }
 
     next(i){
@@ -75,6 +77,7 @@ export default class {
             };
 
             if ( ['use', 'refresh'].indexOf(type) > -1 ){
+                type != 'use' && this.refreshCount++;
                 power.handle.call(this.scope, this.req, this.res, next);
             }else{
                 this.onRefresh(++i);
@@ -130,8 +133,15 @@ export default class {
         }, false);
         let webviews = this.webviews;
         let refresh = () => {
+            if ( this.isRefresh ) return;
+            this.isRefresh = true;
             this.res.refresh = true;
             this.onRefresh();
+            if ( this.refreshCount === 0 ){
+                this.res.refresh = false;
+            }else{
+                this.refreshCount = 0;
+            }
         };
         for ( let i in webviews ){
             let webview = webviews[i].wraproot;

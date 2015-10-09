@@ -23,7 +23,9 @@ export default class {
                     if ( refresher ){
                         refresher.innerHTML = '数据更新完毕!';
                         setTimeout(() => {
-                            refresher.parentNode.removeChild(refresher);
+                            refresher = document.getElementById('webview-refresh');
+                            if ( refresher ) refresher.parentNode.removeChild(refresher);
+                            this.app.isRefresh = false;
                         }, 500);
                     }
                 }
