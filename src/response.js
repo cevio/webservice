@@ -1,6 +1,9 @@
 import * as utils from './utils';
 import animationEnd from 'animationend';
 import cookie from './cookie';
+import * as querystring from 'soyie-querystring';
+import jsonp from 'jsonp';
+import {Promise} from 'es6-promise';
 
 export default class {
     constructor(){
@@ -83,6 +86,54 @@ export default class {
             }, 0);
         };
         $body.appendChild($iframe);
+    }
+    fetch(...args){
+        var url, arg, callback;
+        for ( let i = 0 ; i < args.length ; i++ ){
+            switch (Object.prototype.toString.call(args[i])){
+                case '[object Function]':
+                    callback = args[i];
+                    break;
+                case '[object Object]':
+                    arg = args[i];
+                    break;
+                case '[object String]':
+                    url = args[i];
+                    break;
+            }
+        }
+        if ( !arg ) arg = {};
+        let index = url.indexOf('?');
+        let path, search;
+        if ( index > -1 ){
+            path = url.substring(0, index);
+            search = url.substring(index + 1);
+        }else{
+            path = url.replace(/\?$/, '');
+            search = '';
+        }
+        if ( search ){
+            let querys = querystring.format(search);
+            for ( var i in querys ){
+                if ( !arg[i] ){
+                    arg[i] = querys[i];
+                }
+            }
+        }
+        let searcher = querystring.toString(arg);
+        if ( searcher.length ){
+            url = path + '?' + searcher;
+        }else{
+            url = path;
+        }
+
+        if ( typeof callback === 'function' ){
+            jsonp(url, callback);
+        }else{
+            return new Promise(function(resolve){
+                jsonp(url, resolve);
+            });
+        }
     }
     render(name){
         if ( /^\//.test(name) ){

@@ -45,10 +45,13 @@ app.active('/shop', function(req, res){
 });
 
 app.refresh(function(req, res){
-    console.log('refresh it');
-    setTimeout(()=>{
+    res.fetch('https://www.u51.com/51rp/rpd-advert/news.htm', {
+        page_no:1,
+        page_size: 6
+    },function(data){
+        console.log(data);
         res.refresh = false;
-    }, 2000);
+    });
 });
 
 soyie.ready(() => {
