@@ -1,7 +1,7 @@
 import request from './request';
 import response from './response';
 import layer from './layer';
-import IScroll from 'iscroll';
+import Scroller from './scroller';
 
 var scope = require('./scope');
 
@@ -17,7 +17,7 @@ export default class {
         this.map = {};
         this.scope = scope();
         this.refreshCount = 0;
-        this.isRefresh = false;
+        this.isRefreshing = false;
     }
 
     next(i){
@@ -123,39 +123,24 @@ export default class {
         return this;
     }
 
+    scroller(){
+        let webviews = this.webviews;
+        for ( let i in webviews ){
+            let webview = webviews[i].wraproot;
+            webviews[i].scroller = new Scroller(webview, this);
+        }
+    }
+
     listen(){
         this.req.init();
         this.next();
         history.replaceState({ url: this.req.href }, document.title, '#' + this.req.href);
         window.addEventListener('popstate', object => {
-            var url = object.state.url;
-            url && this.render(url, true);
-        }, false);
-        let webviews = this.webviews;
-        let refresh = () => {
-            if ( this.isRefresh ) return;
-            this.isRefresh = true;
-            this.res.refresh = true;
-            this.onRefresh();
-            if ( this.refreshCount === 0 ){
-                this.res.refresh = false;
-            }else{
-                this.refreshCount = 0;
+            if ( object && object.state ){
+                var url = object.state.url;
+                url && this.render(url, true);
             }
-        };
-        for ( let i in webviews ){
-            let webview = webviews[i].wraproot;
-            webview.iScroll = new IScroll(webview, {
-                click: true
-            });
-            webview.iScroll.on('scrollEnd', function(){
-                if ( webview.scroller != undefined && webview.scroller == 0 && this.y === 0  ){
-                    refresh();
-                }
-            });
-            webview.iScroll.on('scrollStart', function(){
-                webview.scroller = this.y;
-            });
-        }
+        }, false);
+        this.scroller();
     }
 }

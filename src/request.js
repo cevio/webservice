@@ -40,7 +40,7 @@ export default class {
     getScroller(name){
         let object = this.app.webviews[name];
         if ( object ){
-            return object.wraproot.iScroll;
+            return object.scroller.object;
         }
     }
 }

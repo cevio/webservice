@@ -64,9 +64,30 @@ article.navHide .webview section{
     display: block;
 }
 
-article .webview section{ position: relative;}
-#webview-refresh{
+article .webview section{
+    position: relative;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+.webview-refresher{
     padding: 15px 0;
     text-align: center;
     color:#ccc;
+}
+
+.webview-refresher i{
+    margin-right: 10px;
 }

@@ -42,6 +42,13 @@ app.active('/test1', function(req, res){
     res.render('test1');
 });
 
+app.refresh('/test1', function(req, res){
+    console.log('refresh');
+    setTimeout(function(){
+        res.endFresh();
+    }, 3000);
+});
+
 app.active(function(req, res){
     this.nav.title = 'Soyie WebService Guide';
     this.nav.leftHtml = '<i class="fa fa-reorder"></i>';

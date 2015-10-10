@@ -1,5 +1,6 @@
 import component from './component';
 import application from './application';
+import * as utils from './utils';
 
 let webview = (soyie) => {
     const app = new application();
@@ -40,3 +41,5 @@ let webViewHref = (attr, DOM, vm, soyie, app) => {
 };
 
 export default webview;
+
+webview.utils = utils;

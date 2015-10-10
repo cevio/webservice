@@ -13,6 +13,8 @@ export default class {
                 let refresher = document.getElementById('webview-refresh');
                 let dist = document.querySelector('.webview-active section');
                 if ( val ){
+                    if ( this.app.isRefreshing ) return;
+                    this.app.isRefreshing = true;
                     if ( !refresher ){
                         refresher = document.createElement('div');
                         refresher.innerHTML = '<i class="fa fa-spinner fa-spin"></i> 正在刷新数据,请稍后!';
@@ -25,7 +27,7 @@ export default class {
                         setTimeout(() => {
                             refresher = document.getElementById('webview-refresh');
                             if ( refresher ) refresher.parentNode.removeChild(refresher);
-                            this.app.isRefresh = false;
+                            this.app.isRefreshing = false;
                         }, 500);
                     }
                 }
@@ -48,7 +50,7 @@ export default class {
                     element.setAttribute('class', 'webview');
                 });
             setTimeout(()=>{
-                let ob = document.querySelector('.webview-active').iScroll;
+                let ob = webview.scroller.object;
                 ob.refresh();
             }, 100)
         });
@@ -60,12 +62,12 @@ export default class {
         source && source.setAttribute('class', 'webview animated bounceOutRight webview-unactive');
         this.current = webview;
         animationEnd(target, function(){
-            var unActives = Array.prototype.slice.call(document.querySelectorAll('.webview:not(.webview-active)'), 0);
-            unActives.forEach(function(element){
-                element.setAttribute('class', 'webview');
-            });
+            Array.prototype.slice.call(document.querySelectorAll('.webview:not(.webview-active)'), 0)
+                .forEach(function(element){
+                    element.setAttribute('class', 'webview');
+                });
             setTimeout(()=>{
-                let ob = document.querySelector('.webview-active').iScroll;
+                let ob = webview.scroller.object;
                 ob.refresh();
             }, 100)
         });
