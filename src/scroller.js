@@ -1,20 +1,23 @@
 import IScroll from 'iscroll';
 import * as utils from './utils';
+var iScrollClick = iScrollClick();
+
 export default class {
     constructor(webview, app){
         this.element = webview;
         this.section = this.element.querySelector('section');
         this.app = app;
-        this.object = new IScroll(this.element, { click: true, probeType: 3, wheelAction: 'zoom'});
+        this.object = new IScroll(this.element, { click: iScrollClick, probeType: 3, wheelAction: 'zoom'});
         this.init();
         this.refresher = null;
         this.doRefresh = false;
+        this.timer = 0;
         this.status = {
             confirmed: utils.refresh.percent.confirmed,
             ready: utils.refresh.percent.ready,
             start: 100
-        }
-        this.timer = 0;
+        };
+
     }
     init(){
         var that = this;
@@ -112,5 +115,15 @@ export default class {
         }
         this.doRefresh = false;
         this.app.refreshCount = 0;
+    }
+}
+
+function iScrollClick(){
+    if (/iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) return false;
+    if (/Chrome/i.test(navigator.userAgent)) return (/Android/i.test(navigator.userAgent));
+    if (/Silk/i.test(navigator.userAgent)) return false;
+    if (/Android/i.test(navigator.userAgent)) {
+        var s=navigator.userAgent.substr(navigator.userAgent.indexOf('Android')+8,3);
+        return parseFloat(s[0]+s[3]) < 44 ? false : true
     }
 }
