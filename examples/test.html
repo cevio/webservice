@@ -46,6 +46,9 @@
         </webview>
         <webview name="test1" zoom="2" data="{{test1}}">
             <h4>{{data.a}}</h4>
+            <div so-on="click:data.b">click</div>
+            <button so-on="click:data.b">click</button>
+            <input type="button" value="click" so-on="click:data.b" />
             <ul>
                 <li>Pretty row 1</li>
                 <li>Pretty row 2</li>

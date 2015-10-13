@@ -27,7 +27,10 @@ app.use(function(req, res, next){
 app.use('/test1', function(req, res, next){
     if ( !this.test1 ){
         this.test1 = {
-            a: 'test'
+            a: 'test',
+            b: function(){
+                console.log('b');
+            }
         }
     }
     next();
@@ -59,6 +62,5 @@ app.active(function(req, res){
 });
 
 soyie.ready(() => {
-    soyie.bootstrap('envirs-cms', app.scope);
-    app.listen();
+    app.listen('envirs-cms');
 });

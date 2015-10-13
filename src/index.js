@@ -4,6 +4,7 @@ import * as utils from './utils';
 
 let webview = (soyie) => {
     const app = new application();
+    app.soyie = soyie;
     soyie.component('webview', component(soyie, app));
     soyie.directive('so-href', (attr, DOM, vm) => {
         return webViewHref.call(this, attr, DOM, vm, soyie, app);

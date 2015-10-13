@@ -7,7 +7,12 @@ export default class {
         this.element = webview;
         this.section = this.element.querySelector('section');
         this.app = app;
-        this.object = new IScroll(this.element, { click: iScrollClick, probeType: 3, wheelAction: 'zoom'});
+        this.object = new IScroll(this.element, {
+            click: iScrollClick,
+            probeType: 3,
+            wheelAction: 'zoom',
+            preventDefault: false
+        });
         this.init();
         this.refresher = null;
         this.doRefresh = false;

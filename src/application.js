@@ -131,7 +131,8 @@ export default class {
         }
     }
 
-    listen(){
+    listen(name){
+        this.soyie.bootstrap(name, this.scope);
         this.req.init();
         this.next();
         history.replaceState({ url: this.req.href }, document.title, '#' + this.req.href);
