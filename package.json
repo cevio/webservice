@@ -1,7 +1,7 @@
 {
   "name": "webservicer",
   "description": "soyie component - web service",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "keywords": [
     "web",
     "mvvm",
@@ -24,12 +24,7 @@
     "examples"
   ],
   "timestamp": 1438693004413,
-  "dependencies": {
-    "animationend": "0.0.1",
-    "es6-promise": "^3.0.2",
-    "iscroll": "^5.1.3",
-    "soyie": "2.2.35"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
     "babel-core": "^5.8.25",
@@ -39,7 +34,10 @@
     "file-loader": "^0.8.4",
     "style-loader": "^0.12.3",
     "webpack": "^1.12.1",
-    "webpack-dev-server": "^1.10.1"
+    "webpack-dev-server": "^1.10.1",
+    "animationend": "0.0.1",
+    "es6-promise": "^3.0.2",
+    "iscroll": "^5.1.3"
   },
   "scripts": {
     "build": "webpack -p && node build.js",
@@ -55,8 +53,7 @@
     }
   ],
   "main": "./build/webservice.js",
-  "soyieDeps": {
-    "soyie": "2.2.35",
-    "jsonp": "0.0.2"
+  "napDependencies":{
+    "jsonp": "^0.0.2"
   }
 }

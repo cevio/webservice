@@ -3,19 +3,26 @@ exports.removeClass = removeClass;
 exports.removeClassAll = removeClassAll;
 exports.refresh = {
     text: {
-        step1: '下拉刷新数据',
-        step2: '准备刷新数据',
-        step3: '松手刷新数据',
-        step4: '正在刷新数据'
+        step1: '下拉刷新数据...',
+        step2: '准备刷新数据...',
+        step3: '松手刷新数据...',
+        step4: '正在刷新数据...'
     },
     percent: {
         confirmed: 10,
         ready: 30
     },
     icon: {
-        defaults: 'fa fa-long-arrow-down',
+        defaults: 'fa fa-map-pin',
         doing: 'fa fa-spinner fa-pulse'
     }
+};
+
+exports.effect = {
+    goin: 'bounceInRight',
+    goout: 'bounceOutLeft',
+    backin: 'bounceInLeft',
+    backout: 'bounceOutRight'
 };
 
 function addClass(dom, cls){

@@ -37,6 +37,8 @@ app.use('/test1', function(req, res, next){
 });
 
 app.active('/test1', function(req, res){
+    console.log(req.getScroller('test1'));
+    console.log(req.$data);
     this.nav.title = 'Soyie WebService Test 1';
     this.nav.leftHtml = '<i class="fa fa-angle-left"></i>';
     this.nav.rightHtml = '';

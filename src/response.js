@@ -8,31 +8,6 @@ import {Promise} from 'es6-promise';
 export default class {
     constructor(){
         this.current = null;
-        Object.defineProperty(this, 'refresh', {
-            set: function(val){
-                let refresher = document.getElementById('webview-refresh');
-                let dist = document.querySelector('.webview-active section');
-                if ( val ){
-                    if ( this.app.isRefreshing ) return;
-                    this.app.isRefreshing = true;
-                    if ( !refresher ){
-                        refresher = document.createElement('div');
-                        refresher.innerHTML = '<i class="fa fa-spinner fa-spin"></i> 正在刷新数据,请稍后!';
-                        refresher.id = 'webview-refresh';
-                    }
-                    dist.insertBefore(refresher, dist.firstChild);
-                }else{
-                    if ( refresher ){
-                        refresher.innerHTML = '数据更新完毕!';
-                        setTimeout(() => {
-                            refresher = document.getElementById('webview-refresh');
-                            if ( refresher ) refresher.parentNode.removeChild(refresher);
-                            this.app.isRefreshing = false;
-                        }, 500);
-                    }
-                }
-            }
-        });
         Object.defineProperty(this, 'title', {
             set: function(val){ this.setTitle(val);},
             get: function(){ return document.title; }
@@ -41,8 +16,8 @@ export default class {
     go(webview){
         let target = webview.wraproot;
         let source = this.current ? this.current.wraproot : null;
-        target && target.setAttribute('class', 'webview animated bounceInRight webview-active');
-        source && source.setAttribute('class', 'webview animated bounceOutLeft webview-unactive');
+        target && target.setAttribute('class', 'webview animated ' + utils.effect.goin + ' webview-active');
+        source && source.setAttribute('class', 'webview animated ' + utils.effect.goout + ' webview-unactive');
         this.current = webview;
         animationEnd(target, function(){
             Array.prototype.slice.call(document.querySelectorAll('.webview:not(.webview-active)'), 0)
@@ -58,8 +33,8 @@ export default class {
     back(webview){
         let target = webview.wraproot;
         let source = this.current ? this.current.wraproot : null;
-        target && target.setAttribute('class', 'webview animated bounceInLeft webview-active');
-        source && source.setAttribute('class', 'webview animated bounceOutRight webview-unactive');
+        target && target.setAttribute('class', 'webview animated ' + utils.effect.backin + ' webview-active');
+        source && source.setAttribute('class', 'webview animated ' + utils.effect.backout + ' webview-unactive');
         this.current = webview;
         animationEnd(target, function(){
             Array.prototype.slice.call(document.querySelectorAll('.webview:not(.webview-active)'), 0)

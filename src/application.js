@@ -134,6 +134,7 @@ export default class {
     listen(name){
         this.soyie.bootstrap(name, this.scope);
         this.req.init();
+        this.req.$data = this.scope;
         this.next();
         history.replaceState({ url: this.req.href }, document.title, '#' + this.req.href);
         window.addEventListener('popstate', object => {

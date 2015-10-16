@@ -28,7 +28,7 @@ export default class {
     store(name){
         let value = window.localStorage.getItem(name);
         if ( !value || value === 'undefined' || value === 'null' ){
-            value = {};
+            value = null;
         }else{
             value = JSON.parse(value);
         }
