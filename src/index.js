@@ -26,7 +26,7 @@ let webViewHref = (attr, DOM, vm, soyie, app) => {
     object.get = function(){
         return object.value;
     };
-    object.render = function(scope = this.scope, options = {}){
+    object.notify = function(scope = this.scope, options = {}){
         this.scope = scope;
         this.set(soyie.util.get(this.expression, this.scope, options));
         if ( object.binded ) return;
