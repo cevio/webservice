@@ -10,7 +10,7 @@ exports.refresh = {
     },
     percent: {
         confirmed: 10,
-        ready: 30
+        ready: 25
     },
     icon: {
         defaults: 'fa fa-map-pin',

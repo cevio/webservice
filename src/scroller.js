@@ -20,7 +20,7 @@ export default class {
         this.status = {
             confirmed: utils.refresh.percent.confirmed,
             ready: utils.refresh.percent.ready,
-            start: 100
+            start: 50
         };
 
     }
