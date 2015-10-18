@@ -50,6 +50,9 @@ export default class {
     store(name, value){
         window.localStorage.setItem(name, JSON.stringify(value));
     }
+    removeStore(name){
+        window.localStorage.removeItem(name);
+    }
     cookie(...args){
         cookie.set.apply(cookie, args);
     }
