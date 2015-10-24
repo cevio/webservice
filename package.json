@@ -55,8 +55,8 @@
   "main": "./build/webservice.js",
   "napDependencies": {
     "jsonp": "^0.0.2",
-    "soyie": "^2.3.40",
-    "soyie-http-router": "^0.0.2",
+    "soyie": "^2.3.46",
+    "soyie-http-router": "^0.0.4",
     "events": "^1.0.2"
   }
 }
