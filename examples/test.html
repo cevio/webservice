@@ -12,97 +12,17 @@
     <title>A new page</title>
 
     <!--css:start:index.css-->
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/font-awesome.css" rel="stylesheet" />
-    <link href="css/animate.css" rel="stylesheet" />
-    <link href="css/common.css" rel="stylesheet" />
-    <link href="css/base.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css" />
     <!--css:end-->
+    <style>.hide{display: none;}</style>
 </head>
 <body>
 <webapp so-name="envirs-cms">
-    <header class="container-fluid {{nav.classes()}}">
-        <section class="row">
-            <div class="left col-xs-2 text-left" so-on="click:nav.onLeftPress" so-html="{{nav.leftHtml}}"></div>
-            <div class="title col-xs-8 text-center">{{nav.title}}</div>
-            <div class="right col-xs-2 text-right" so-on="click:nav.onRightPress" so-html="{{nav.rightHtml}}"></div>
-        </section>
-    </header>
-    <article class="{{nav.classes()}}">
-        <webview name="home" data="{{tree}}" zoom="1">
-            <div so-repeat="{{data}}">
-                <h5 class="title"><i class="fa {{icon}}"></i> {{title}}</h5>
-                <ul class="pannel">
-                    <li so-repeat="{{menus}}" so-href="{{href}}">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xs-9 text-left">{{name}}</div>
-                                <div class="col-xs-3 text-right"><i class="fa fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </webview>
-        <webview name="test1" zoom="2" data="{{test1}}">
-            <h4>{{data.a}}</h4>
-            <div so-on="click:data.b">click</div>
-            <button so-on="click:data.b">click</button>
-            <input type="button" value="click" so-on="click:data.b" />
-            <ul>
-                <li>Pretty row 1</li>
-                <li>Pretty row 2</li>
-                <li>Pretty row 3</li>
-                <li>Pretty row 4</li>
-                <li>Pretty row 5</li>
-                <li>Pretty row 6</li>
-                <li>Pretty row 7</li>
-                <li>Pretty row 8</li>
-                <li>Pretty row 9</li>
-                <li>Pretty row 10</li>
-                <li>Pretty row 11</li>
-                <li>Pretty row 12</li>
-                <li>Pretty row 13</li>
-                <li>Pretty row 14</li>
-                <li>Pretty row 15</li>
-                <li>Pretty row 16</li>
-                <li>Pretty row 17</li>
-                <li>Pretty row 18</li>
-                <li>Pretty row 19</li>
-                <li>Pretty row 20</li>
-                <li>Pretty row 21</li>
-                <li>Pretty row 22</li>
-                <li>Pretty row 23</li>
-                <li>Pretty row 24</li>
-                <li>Pretty row 25</li>
-                <li>Pretty row 26</li>
-                <li>Pretty row 27</li>
-                <li>Pretty row 28</li>
-                <li>Pretty row 29</li>
-                <li>Pretty row 30</li>
-                <li>Pretty row 31</li>
-                <li>Pretty row 32</li>
-                <li>Pretty row 33</li>
-                <li>Pretty row 34</li>
-                <li>Pretty row 35</li>
-                <li>Pretty row 36</li>
-                <li>Pretty row 37</li>
-                <li>Pretty row 38</li>
-                <li>Pretty row 39</li>
-                <li>Pretty row 40</li>
-                <li>Pretty row 41</li>
-                <li>Pretty row 42</li>
-                <li>Pretty row 43</li>
-                <li>Pretty row 44</li>
-                <li>Pretty row 45</li>
-                <li>Pretty row 46</li>
-                <li>Pretty row 47</li>
-                <li>Pretty row 48</li>
-                <li>Pretty row 49</li>
-                <li>Pretty row 50</li>
-            </ul>
-        </webview>
-    </article>
+    <webview name="list" data="{{global.home}}">
+        <div class="list">
+            <p so-repeat="{{data.list}}">{{$this}}</p>
+        </div>
+    </webview>
 </webapp>
 <!--script:start:index.js-->
 <script src="./bundle.js"></script>

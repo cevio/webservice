@@ -1,35 +1,12 @@
-h5.title{
-    color: #999;
-    padding: 0px 15px;
-    font-weight: normal;
-    font-size: 14px;
-    margin: 15px 0;
-}
-ul,li{
-    list-style: none;
-    padding: 0;
+body,
+html{
     margin: 0;
+    padding: 0;
 }
-
-ul.pannel{
-    border: 1px solid #e9e9e9;
-    background-color: #fff;
-    border-left: 0;
-    border-right: 0;
-    color: #777;
-    margin-bottom: 15px;
-}
-
-ul.pannel li{
-    padding-left: 15px;
-}
-
-ul.pannel li .container{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-ul.pannel li:last-child .container{
-    border-bottom: 0;
+.webview{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
 }

@@ -1,46 +1,32 @@
-import component from './component';
-import application from './application';
-import * as utils from './utils';
+var http = require('soyie-http-router');
+var component = require('./component');
+var browsers = require('./browser');
+var render = require('./render');
 
-let webview = (soyie) => {
-    const app = new application();
-    app.soyie = soyie;
-    soyie.component('webview', component(soyie, app));
-    soyie.directive('so-href', (attr, DOM, vm) => {
-        return webViewHref.call(this, attr, DOM, vm, soyie, app);
-    });
+var webview = module.exports = function(soyie){
+    var browser = new browsers();
+    var app = http.createServer();
+    browser.http = app;
+    app.namespace = 'webservice';
+    app.defineFreeze('browser', browser);
+    Object.defineProperty(app.request, '$data', webview.defineParse(app));
+    webview.listen(soyie, app);
+    render(app, browser);
+    soyie.component('webview', component(browser));
     return app;
 };
 
-let webViewHref = (attr, DOM, vm, soyie, app) => {
-    var expression = soyie.util.formatExpression(attr.nodeValue);
-    var object = new soyie.nodeStructor(DOM, expression);
-    object.parent = vm;
-    object.value = null;
-    object.binded = false;
-    object.set = function(val){
-        if ( val !== object.value ){
-            object.value = val;
-        }
-    };
-    object.get = function(){
-        return object.value;
-    };
-    object.notify = function(scope = this.scope, options = {}){
-        this.scope = scope;
-        this.set(soyie.util.get(this.expression, this.scope, options));
-        if ( object.binded ) return;
-        this.node.addEventListener('click', function(){
-            app.render(object.get());
-        }, false);
-        object.binded = true;
-    };
-
-    DOM.removeAttribute('so-href');
-
-    return object;
+webview.listen = function(soyie, app){
+    var listenner = app.listen.bind(app);
+    app.listen = function(name){
+        soyie.bootstrap(name, app.browser.data);
+        setTimeout(listenner, 0);
+    }
 };
 
-export default webview;
-
-webview.utils = utils;
+webview.defineParse = function(app){
+    return {
+        set: function(){ throw new Error('you can not set req.$data'); },
+        get: function(){ return  app.browser.scope; }
+    }
+};
