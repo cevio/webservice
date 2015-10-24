@@ -27,4 +27,5 @@ render.engine = function(browser){
     if ( target ){
         target.wraproot.setAttribute('class', 'webview');
     }
+    browser.exchange();
 };
