@@ -2,6 +2,7 @@ var http = require('soyie-http-router');
 var component = require('./component');
 var browsers = require('./browser');
 var render = require('./render');
+var sohref = require('./sohref');
 
 var webview = module.exports = function(soyie){
     var browser = new browsers();
@@ -13,6 +14,7 @@ var webview = module.exports = function(soyie){
     webview.listen(soyie, app);
     render(app, browser);
     soyie.component('webview', component(browser));
+    soyie.directive('so-href', sohref(soyie, app));
     return app;
 };
 
@@ -20,7 +22,10 @@ webview.listen = function(soyie, app){
     var listenner = app.listen.bind(app);
     app.listen = function(name){
         soyie.bootstrap(name, app.browser.data);
-        setTimeout(listenner, 0);
+        setTimeout(function(){
+            app.browser.animate && app.browser.animate(app.browser);
+            listenner();
+        }, 0);
     }
 };
 

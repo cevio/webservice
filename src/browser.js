@@ -13,7 +13,6 @@ var browser = module.exports = function(){
         get: function(){ return this.animate; },
         set: function(engine){
             this.animate = engine;
-            this.animate(this);
         }
     });
 };

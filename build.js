@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var cssmin = require('cssmin');
-var css = ['examples/css/base.css'];
+var css = ['examples/css/base.css', 'examples/css/animations.css', 'examples/css/style.css'];
 var code = [];
 
 css.forEach(function(cs){

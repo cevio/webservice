@@ -1,0 +1,38 @@
+html,body{height: 100%;}
+.pt-perspective {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    perspective: 1200px;
+}
+.pt-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    background-color: #fff;
+}
+.pt-page[i="1"]{background: #fd6a62;}
+.pt-page[i="2"]{background: #0ac2d2;}
+.pt-page[i="3"]{background: #f68dbb;}
+.pt-page[i="0"]{background: #fdc162;}
+.pt-page[i="4"]{background: #60d7a9;}
+.pt-page-current,.page-show {
+    visibility: visible;
+    z-index: 10;
+}
+.page-show{z-index: 1;}
+.pt-page-ontop {
+    z-index: 100;
+}

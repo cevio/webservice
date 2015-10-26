@@ -10,12 +10,6 @@ module.exports = function(browser){
 
 function wrapComponent(temp){
     this.wrapname = this.virtualDom.getAttribute('name');
-    this.zoom = this.virtualDom.getAttribute('zoom');
-    if ( this.zoom == undefined ){
-        this.zoom = 0;
-    }else{
-        this.zoom = Number(this.zoom);
-    }
     return '<div class="webview hide"><section>' + temp + '</section></div>';
 }
 

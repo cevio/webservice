@@ -1,79 +1,28 @@
-# webservice #
-soyie webservice
+# webservice
 
-# Install #
+webservice 是一套单页面级的路由框架，包含了`soyie` `soyie-http-router`等框架或组件，能够实现复杂路由功能，类似于nodejs的`express`框架。它的优点在于我们可以处理复杂逻辑的页面路由，通过自定义路由回调，轻松实现页面逻辑。
 
-``` javascript
-npm install --save webservicer
-```
-# How to use #
+# install
 
-use this template to install webservice
+> nap install --save webservicer
+
+# usage
 
 ``` javascript
 var soyie = require('soyie');
-var webview = require('webservicer');
+var webservice = require('webservicer');
 var app = webview(soyie);
-
-/**
- * local code here.
- * use app to render webview
- */
-app.use(function(req, res, next){
-	this.home.a = 123;
-	next();
-});
-
-app.load(function(req, res){
-    res.cookie('a', req.cookie('a') + 'test');
-});
-
 app.active(function(req, res){
-    res.title = 'new page';
-    res.render('home');
+	res.render('home');
 });
-
-app.refresh(function(req, res){
-    res.fetch('https://www.u51.com/51rp/rpd-advert/news.htm', {
-        page_no:1,
-        page_size: 6
-    },function(data){
-        res.store('user', data);
-        res.refresh = false;
-    });
-});
-
-/**
- * when dom ready
- * you can setup soyie by bootstrap method
- * then you can listen app
- */
-soyie.ready(() => {
-    soyie.bootstrap('envirs-cms', app.scope);
-    app.listen();
+soyie.ready(function(){
+	app.listen('envirs-cms');
 });
 ```
 
-# Middleware #
+# app
 
-`app.use` make middleware.
+app 是一个webservice初始化的实例对象，可以认为是一个HTTP服务引擎。
 
-  * `req` request.
-  * `res` response.
-  * `next` next router
-  
-# Page status #
+## app api
 
-make status on app.
-
-## app.load ##
-
-when webview is loaded, emmit it. And then route next.
-
-## app.active ##
-
-when webview is actived, emit it.
-
-## app.refresh ##
-
-when use touch refresh, emit it.

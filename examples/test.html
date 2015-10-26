@@ -13,16 +13,19 @@
 
     <!--css:start:index.css-->
     <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/animations.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
     <!--css:end-->
     <style>.hide{display: none;}</style>
 </head>
 <body>
 <webapp so-name="envirs-cms">
-    <webview name="list" data="{{global.home}}">
+    <webview name="shop" data="{{global.shop}}">
         <div class="list">
             <p so-repeat="{{data.list}}">{{$this}}</p>
         </div>
     </webview>
+    <webview name="home" data="{{global.home}}">welcome {{data.name}} <a so-href="/shop/2">load shop list</a></webview>
 </webapp>
 <!--script:start:index.js-->
 <script src="./bundle.js"></script>
