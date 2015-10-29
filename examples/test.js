@@ -9,6 +9,11 @@ var app = webview(soyie);
 
 app.browser.engine = require('webservice-animate')(0,1);
 
+//app.use(function(req,res, next){
+//    req.$head.hide = true;
+//    next();
+//});
+
 app.load(function(req,res){
     req.$data.home = {
         name: 'evio'
@@ -16,6 +21,9 @@ app.load(function(req,res){
 });
 
 app.active(function(req, res){
+    req.$head.title = 'Home';
+    req.$head.leftHTML = '';
+
     res.render('home');
 });
 
@@ -30,6 +38,8 @@ app.load('/shop/:id', function(req, res){
 });
 
 app.active('/shop/:id', function(req, res){
+    req.$head.title = 'shop';
+    req.$head.leftHTML = '&lt;';
     res.render('shop');
 });
 

@@ -1,7 +1,14 @@
 var EventEmitter = require('events').EventEmitter;
 var browser = module.exports = function(){
     this.views = {};
-    this.data = { global: {} };
+    this.data = { global: {}, header: {
+        leftHTML: '',
+        rightHTML: '',
+        title: 'Welcome',
+        leftClick: function(){},
+        rightClick: function(){},
+        hide: false
+    } };
     this.current = null;
     this.target = null;
     this.animate = null;
@@ -9,11 +16,13 @@ var browser = module.exports = function(){
         set: function(val){ this.data.global = val; },
         get: function(){ return this.data.global; }
     });
+    Object.defineProperty(this, 'headbar', {
+        set: function(val){ this.data.header = val; },
+        get: function(){ return this.data.header; }
+    });
     Object.defineProperty(this, 'engine', {
         get: function(){ return this.animate; },
-        set: function(engine){
-            this.animate = engine;
-        }
+        set: function(engine){ this.animate = engine; }
     });
 };
 

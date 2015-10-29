@@ -1,5 +1,6 @@
 var http = require('soyie-http-router');
 var component = require('./component');
+var header = require('./header');
 var browsers = require('./browser');
 var render = require('./render');
 var sohref = require('./sohref');
@@ -11,8 +12,10 @@ var webview = module.exports = function(soyie){
     app.namespace = 'webservice';
     app.defineFreeze('browser', browser);
     Object.defineProperty(app.request, '$data', webview.defineParse(app));
+    Object.defineProperty(app.request, '$head', webview.defineHead(app));
     webview.listen(soyie, app);
     render(app, browser);
+    soyie.component('webhead', header(browser));
     soyie.component('webview', component(browser));
     soyie.directive('so-href', sohref(soyie, app));
     return app;
@@ -33,6 +36,13 @@ webview.defineParse = function(app){
     return {
         set: function(){ throw new Error('you can not set req.$data'); },
         get: function(){ return  app.browser.scope; }
+    }
+};
+
+webview.defineHead = function(app){
+    return {
+        set: function(){ throw new Error('you can not set req.$head'); },
+        get: function(){ return  app.browser.headbar; }
     }
 };
 
