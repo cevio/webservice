@@ -7,7 +7,7 @@ var soyie = require('soyie');
 var webview = require('../src/index');
 var app = webview(soyie);
 
-app.browser.engine = require('webservice-animate')(0, 1);
+app.browser.engine = require('webservice-animate')(0,1);
 
 app.load(function(req,res){
     req.$data.home = {
@@ -20,8 +20,12 @@ app.active(function(req, res){
 });
 
 app.load('/shop/:id', function(req, res){
+    var j = 30, a = [];
+    for ( var i = 0 ; i < j ; i++ ){
+        a.push(i + 1);
+    }
     req.$data.shop = {
-        list: [1,2,3,4,5,6,7,8,9,0]
+        list: a
     }
 });
 

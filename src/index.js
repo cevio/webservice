@@ -35,3 +35,5 @@ webview.defineParse = function(app){
         get: function(){ return  app.browser.scope; }
     }
 };
+
+webview.engineAnimate = require('webservice-animate');

@@ -1,7 +1,7 @@
 {
   "name": "webservicer",
   "description": "soyie component - web service",
-  "version": "0.0.16",
+  "version": "0.0.18",
   "keywords": [
     "web",
     "mvvm",
@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "webpack -p && node build.js",
-    "dev": "webpack-dev-server --host 127.0.0.1 --colors --content-base ./examples --config ./webpack.dev.config.js"
+    "dev": "webpack-dev-server --host 192.168.20.57 --colors --content-base ./examples --config ./webpack.dev.config.js"
   },
   "engine-strict": true,
   "engines": {
@@ -56,7 +56,7 @@
   "napDependencies": {
     "jsonp": "^0.0.2",
     "soyie": "^2.3.46",
-    "soyie-http-router": "^0.0.5",
+    "soyie-http-router": "^0.0.6",
     "events": "^1.0.2"
   }
 }
