@@ -7,7 +7,8 @@ var browser = module.exports = function(){
         title: 'Welcome',
         leftClick: function(){},
         rightClick: function(){},
-        hide: false
+        hide: false,
+        page: ''
     } };
     this.current = null;
     this.target = null;

@@ -1,7 +1,7 @@
 module.exports = function(browser){
     return {
         props: ['menu'],
-        template: '<div class="webview-header {{menu.hide?\'hide\':\'\'}}">' +
+        template: '<div class="webview-header {{menu.page}} {{menu.hide?\'hide\':\'\'}}">' +
         '<div class="webview-header-outer">' +
         '<div class="webview-header-inner">' +
         '<div class="clearfix">' +
