@@ -10,7 +10,7 @@ module.exports = function(browser){
 
 function wrapComponent(temp){
     this.wrapname = this.virtualDom.getAttribute('name');
-    return '<div class="webview hide"><section>' + temp + '</section></div>';
+    return '<div class="webview"><section>' + temp + '</section></div>';
 }
 
 function init(browser){
