@@ -1,7 +1,7 @@
 {
   "name": "webservicer",
   "description": "soyie component - web service",
-  "version": "0.0.21",
+  "version": "0.0.23",
   "keywords": [
     "web",
     "mvvm",
@@ -56,7 +56,7 @@
   "napDependencies": {
     "jsonp": "^0.0.2",
     "soyie": "^2.3.46",
-    "soyie-http-router": "^0.0.8",
+    "soyie-http-router": "^0.0.9",
     "events": "^1.0.2"
   }
 }
