@@ -5,7 +5,7 @@ html,body{
     overflow: hidden;
     position: relative;
 }
-*{
+a{
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
