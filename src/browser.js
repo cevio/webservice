@@ -4,10 +4,10 @@ var browser = module.exports = function(){
     this.data = { global: {}, header: {
         leftHTML: '',
         rightHTML: '',
-        title: 'Welcome',
+        title: '',
         leftClick: function(){},
         rightClick: function(){},
-        hide: false,
+        hide: true,
         page: ''
     } };
     this.current = null;
