@@ -7,6 +7,10 @@ var soyie = require('soyie');
 var webview = require('../src/index');
 var app = webview(soyie);
 
+app.on('redirected', function(){
+    console.log(1)
+})
+
 app.browser.engine = require('webservice-animate')(16,17);
 
 //app.use(function(req,res, next){

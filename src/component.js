@@ -3,7 +3,7 @@ module.exports = function(browser){
         props: ['data'],
         events: {
             wrapTemplate: wrapComponent,
-            init: init(browser)
+            scanDoms: init(browser)
         }
     }
 };
@@ -16,7 +16,10 @@ function wrapComponent(temp){
 function init(browser){
     return function(){
         for ( let i = 0 ; i < this.element.childNodes.length ; i++ ){
-            if ( this.element.childNodes[i].nodeType === 1 ){
+            if (
+                this.element.childNodes[i].nodeType === 1 &&
+                this.element.childNodes[i].getAttribute('class') === 'webview'
+            ){
                 this.wraproot = this.element.childNodes[i];
                 break;
             }
