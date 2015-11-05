@@ -5,6 +5,9 @@ html,body{
     overflow: hidden;
     position: relative;
 }
+*{
+    box-sizing: border-box;
+}
 .clearflash{
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
